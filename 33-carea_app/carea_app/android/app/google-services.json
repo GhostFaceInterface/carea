@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "816970262025",
+    "project_id": "caera-a27eb",
+    "storage_bucket": "caera-a27eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816970262025:android:2aaae4152b176e89ef7ad8",
+        "android_client_info": {
+          "package_name": "com.example.carea_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtKDj8V4SX7afIhKC6QA0uVbBwHZ6WDpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

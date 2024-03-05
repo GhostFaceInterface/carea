@@ -1,5 +1,5 @@
 import 'package:carea/screens/home_screen.dart';
-import 'package:carea/screens/registration_screen.dart';
+//import 'package:carea/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
