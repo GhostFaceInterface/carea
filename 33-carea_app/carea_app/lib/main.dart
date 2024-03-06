@@ -1,7 +1,9 @@
 import 'package:carea/commons/AppTheme.dart';
 import 'package:carea/commons/constants.dart';
+import 'package:carea/firebase_options.dart';
 import 'package:carea/screens/flash_screen.dart';
 import 'package:carea/store/AppStore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -10,6 +12,9 @@ import 'package:nb_utils/nb_utils.dart';
 void main() async {
   //region Entry Point
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await initialize();
 
