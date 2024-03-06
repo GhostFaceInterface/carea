@@ -7,6 +7,7 @@ import 'package:carea/screens/signup_screen.dart';
 import 'package:carea/store/user_signup.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginWithPassScreen extends StatefulWidget {
   const LoginWithPassScreen({Key? key}) : super(key: key);
@@ -29,6 +30,31 @@ class _LoginWithPassScreenState extends State<LoginWithPassScreen> {
   var userinfo;
 
   bool? checkBoxValue = false;
+
+
+Future<void> _signInWithEmailAndPassword() async {
+    try {
+     await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController!.text.trim(),
+      password: _passwordController!.text,
+    );
+      // Kullanıcı başarıyla giriş yaptı, istediğiniz işlemleri burada gerçekleştirebilirsiniz.
+      // Örneğin, ana ekrana yönlendirme veya giriş başarılı mesajı gösterme.
+      // Ana menüye yönlendirme işlemini burada gerçekleştirmeyerek, kullanıcı giriş başarılı olduğunda yönlendirme yapma işlemi kontrol edilebilir.
+
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('Kullanıcı bulunamadı.');
+      } else if (e.code == 'wrong-password') {
+        print('Hatalı şifre.');
+      }
+      // Hata durumlarını ele alabilirsiniz.
+    }
+  }
+
+
+
 
   @override
   void initState() {
@@ -150,7 +176,8 @@ class _LoginWithPassScreenState extends State<LoginWithPassScreen> {
                   GestureDetector(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                        _signInWithEmailAndPassword(); // E-posta ve şifre ile giriş yapma fonksiyonunu çağırın.
                       }
                     },
                     child: Container(

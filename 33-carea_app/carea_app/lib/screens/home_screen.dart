@@ -3,6 +3,8 @@ import 'package:carea/fragments/inbox_fragment.dart';
 import 'package:carea/fragments/orders_fragment.dart';
 import 'package:carea/fragments/setting_fragment.dart';
 import 'package:carea/fragments/wallet_fragment.dart';
+import 'package:carea/screens/registration_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -14,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   int _selectedIndex = 0;
   final _pages = <Widget>[
     DashBoardFragment(),
@@ -49,6 +52,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onItemTapped(int index) {
     setState(() {
+      if(index==4 && _auth.currentUser==null){
+        RegistrationScreen().launch(context, isNewTask: true);
+        return;
+      }
+
       _selectedIndex = index;
     });
   }
