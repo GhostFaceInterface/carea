@@ -4,6 +4,7 @@ import 'package:carea/screens/login_with_pass_screen.dart';
 import 'package:carea/screens/notification_screen.dart';
 import 'package:carea/screens/payment_screen.dart';
 import 'package:carea/screens/profile_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -172,9 +173,14 @@ class _SettingFragmentState extends State<SettingFragment> {
               title: "Logout",
               titleTextStyle: boldTextStyle(),
               onTap: () {
-                showConfirmDialogCustom(context, onAccept: (c) {
+                showConfirmDialogCustom(context, onAccept: (c) async {
+                   try{
+                  await FirebaseAuth.instance.signOut();
                   LoginWithPassScreen().launch(context, isNewTask: true);
-                }, dialogType: DialogType.CONFIRMATION);
+                }catch(e){
+                  debugPrint(e.toString());
+                }
+              }, dialogType: DialogType.CONFIRMATION);
               },
               trailing: Icon(Icons.arrow_forward_ios_rounded, size: 18, color: context.iconColor),
             ),

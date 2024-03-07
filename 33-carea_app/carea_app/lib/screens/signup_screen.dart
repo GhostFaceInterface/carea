@@ -5,6 +5,7 @@ import 'package:carea/main.dart';
 import 'package:carea/screens/login_with_pass_screen.dart';
 import 'package:carea/screens/profile_screen.dart';
 import 'package:carea/store/user_signup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -26,6 +27,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
   FocusNode focusPassword = FocusNode();
 
   bool isIconTrue = false;
+
+  Future<void> _signUp() async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text,
+      );
+
+      //TODO: You can handle the user registration success here
+      print('User registered successfully: ${userCredential.user?.uid}');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProfileScreen()),
+      );
+    } on FirebaseAuthException catch (e) {
+      //TODO: Handle registration failure (e.g., email already exists)
+      print('Failed to register user: $e');
+    }
+  }
+  
+
+
+
 
   @override
   Widget build(BuildContext context) {

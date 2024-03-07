@@ -3,6 +3,7 @@ import 'package:carea/commons/widgets.dart';
 import 'package:carea/main.dart';
 import 'package:carea/screens/forgot_pass_screen.dart';
 import 'package:carea/screens/home_screen.dart';
+import 'package:carea/screens/profile_screen.dart';
 import 'package:carea/screens/signup_screen.dart';
 import 'package:carea/store/user_signup.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ Future<void> _signInWithEmailAndPassword() async {
       // Örneğin, ana ekrana yönlendirme veya giriş başarılı mesajı gösterme.
       // Ana menüye yönlendirme işlemini burada gerçekleştirmeyerek, kullanıcı giriş başarılı olduğunda yönlendirme yapma işlemi kontrol edilebilir.
 
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('Kullanıcı bulunamadı.');
