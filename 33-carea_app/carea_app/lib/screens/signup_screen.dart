@@ -133,10 +133,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 GestureDetector(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.push(
+                      
+                      _signUp();
+                      /*Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => ProfileScreen()),
-                      );
+                      );*/
                     }
                   },
                   child: Container(

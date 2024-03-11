@@ -294,7 +294,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           dropdownValue = newValue.toString();
                         });
                       },
-                      items: <String>['Male', 'Female', 'Other'].map<DropdownMenuItem<String>>((String value) {
+                      items: <String>['Male', 'Female'].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),

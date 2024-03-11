@@ -18,11 +18,21 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
-   return WillPopScope(
+   return PopScope(
+  canPop: true, // veya false, geri tuşunun kullanılabilir olup olmadığını belirtir
+  onPopInvoked: (didPop) async {
+    if (didPop) {
+      // Geri tuşu kullanıldı
+      FocusScope.of(context).unfocus();
+    }
+  },
+
+  /*WillPopScope(
   onWillPop: () async {
     FocusScope.of(context).unfocus();
     return true;
-  },
+    */
+
       child: Scaffold(
         appBar: careaAppBarWidget(context, titleText: ""),
         body: SingleChildScrollView(
