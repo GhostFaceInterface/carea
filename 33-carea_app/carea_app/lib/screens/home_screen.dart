@@ -53,7 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void _onItemTapped(int index) {
     setState(() {
       if(index==4 && _auth.currentUser==null){
-        RegistrationScreen().launch(context, isNewTask: true);
+       Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationScreen()));
+       //RegistrationScreen().launch(context, isNewTask: true);
         return;
       }else{
       _selectedIndex = index;
