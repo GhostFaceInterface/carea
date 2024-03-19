@@ -5,8 +5,6 @@ import 'package:carea/main.dart';
 import 'package:carea/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:carea/screens/home_screen.dart';
-
 import 'login_with_pass_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
