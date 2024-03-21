@@ -8,7 +8,7 @@ class UserInfo {
   String userContactNumber;
   String userGender;
   String userImage;
-  Advert advert;
+  List <Advert> advert;
 
   UserInfo(
     this.userFullName,
